@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FreshAI — AI-Powered Produce Diagnostics</title>
+    
+    <!-- Link Stylesheet using Flask Jinja url_for -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    
+    <!-- Add FontAwesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Link Script using Flask Jinja url_for -->
+    <script src="{{ url_for('static', filename='js/script.js') }}" defer></script>
+</head>
+<body>
+
+    <!-- Premium Navigation Bar -->
+    <header class="navbar">
+        <div class="container navbar-container">
+            <a href="/" class="brand">
+                <span class="brand-icon">🥝</span>
+                <span class="brand-text">FreshAI</span>
+            </a>
+            <nav class="nav-links">
+                <a href="#about" class="nav-link">About</a>
+                <a href="#features" class="nav-link">Features</a>
+                <a href="#how-it-works" class="nav-link">How it Works</a>
+                <a href="#upload" class="nav-btn">Launch Detector</a>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <!-- Hero Section -->
+        <section class="hero" id="about">
+            <div class="container hero-grid">
+                
+                <!-- Left Hero: Description -->
+                <div class="hero-content anim-slide-up">
+                    <div class="badge-ai">
+                        <span class="badge-ai-dot"></span>
+                        Deep Learning V5 Classifier
+                    </div>
+                    
+                    <h1 class="hero-title">
+                        Fresh vs Rotten Detection using <span class="highlight">Artificial Intelligence</span>
+                    </h1>
+                    
+                    <p class="hero-desc">
+                        Empower your supply chain and quality inspection. Utilizing localized YOLOv5 object bounding and custom TensorFlow convolutional neural networks, FreshAI detects freshness and decay instantly.
+                    </p>
+                    
+                    <ul class="hero-features-list">
+                        <li class="hero-feature-item">
+                            <span class="hero-feature-icon"><i class="fa-solid fa-check"></i></span>
+                            YOLO Object Detection
+                        </li>
+                        <li class="hero-feature-item">
+                            <span class="hero-feature-icon"><i class="fa-solid fa-check"></i></span>
+                            TensorFlow Classification
+                        </li>
+                        <li class="hero-feature-item">
+                            <span class="hero-feature-icon"><i class="fa-solid fa-check"></i></span>
+                            Multiple Produce Support
+                        </li>
+                        <li class="hero-feature-item">
+                            <span class="hero-feature-icon"><i class="fa-solid fa-check"></i></span>
+                            Real-time Verification
+                        </li>
+                    </ul>
+                </div>
+                
+                <!-- Right Hero: Upload Panel -->
+                <div class="upload-card-wrapper anim-slide-up anim-delay-1" id="upload">
+                    <div class="upload-card">
+                        <h3 class="upload-card-title">Analyze Freshness</h3>
+                        <p class="upload-card-desc">Upload a picture of fruits or vegetables to assess quality.</p>
+                        
+                        <!-- Flask POST Form - Preserving exact routes, methods, encodings and input fields -->
+                        <form action="/predict" method="post" enctype="multipart/form-data" id="upload-form" class="form-group">
+                            
+                            <!-- Custom Dotted Dropzone acting as Label for the file input -->
+                            <div class="dropzone" id="dropzone">
+                                <div id="dropzone-content" class="dropzone-content-wrapper" style="display: flex; flex-direction: column; align-items: center; gap: 16px;">
+                                    <i class="fa-solid fa-cloud-arrow-up dropzone-icon"></i>
+                                    <p class="dropzone-text">Drag and drop your image here</p>
+                                    <p class="dropzone-subtext">Supports JPG, PNG, JPEG (Max 10MB)</p>
+                                    <span class="browse-btn">Browse Files</span>
+                                </div>
+                                
+                                <!-- Hidden Real File Input with EXACT backend name: "image" -->
+                                <input type="file" name="image" id="file-input" class="file-input-hidden" accept="image/*" required>
+                                
+                                <!-- Client-side Image Preview Container -->
+                                <div class="preview-container" id="preview-container">
+                                    <button type="button" class="remove-preview-btn" id="remove-preview" title="Remove image">&times;</button>
+                                    <img src="" id="preview-img" class="preview-img" alt="Upload Preview">
+                                </div>
+                            </div>
+                            
+                            <!-- Uploaded file details bar -->
+                            <div class="file-info-bar" id="file-info-bar">
+                                <span class="file-name-txt" id="file-name-txt">filename.jpg</span>
+                                <i class="fa-solid fa-circle-check" style="color: var(--primary);"></i>
+                            </div>
+                            
+                            <!-- Submit Button with dynamic loader animations -->
+                            <button type="submit" class="submit-btn" id="submit-btn">
+                                <span class="btn-loader" id="btn-loader"></span>
+                                <span id="btn-text">🔍 Predict Freshness</span>
+                            </button>
+                        </form>
+                    </div>
+                </div>
+                
+            </div>
+        </section>
+
+        <!-- Feature Section -->
+        <section class="features-section" id="features">
+            <div class="container">
+                <div class="section-header anim-slide-up">
+                    <span class="section-tag">Key Features</span>
+                    <h2 class="section-title">High Precision Computer Vision</h2>
+                    <p class="section-desc">Powered by advanced deep learning technologies to deliver rapid and reliable predictions.</p>
+                </div>
+                
+                <div class="features-grid">
+                    <!-- Feature 1 -->
+                    <div class="feature-card anim-slide-up anim-delay-1">
+                        <div class="feature-icon-wrapper">
+                            <i class="fa-solid fa-compress"></i>
+                        </div>
+                        <h3 class="feature-title">YOLO Object Detection</h3>
+                        <p class="feature-text">Locates, labels, and sections off fruits inside cluttered backgrounds or stacks, isolating individual targets.</p>
+                    </div>
+                    
+                    <!-- Feature 2 -->
+                    <div class="feature-card anim-slide-up anim-delay-2">
+                        <div class="feature-icon-wrapper">
+                            <i class="fa-solid fa-brain"></i>
+                        </div>
+                        <h3 class="feature-title">TensorFlow Model</h3>
+                        <p class="feature-text">Analyzes crops with a deep custom Convolutional Neural Network trained on thousands of fruit textures.</p>
+                    </div>
+                    
+                    <!-- Feature 3 -->
+                    <div class="feature-card anim-slide-up anim-delay-3">
+                        <div class="feature-icon-wrapper">
+                            <i class="fa-solid fa-lemon"></i>
+                        </div>
+                        <h3 class="feature-title">Multiple Fruit Support</h3>
+                        <p class="feature-text">Calibrated to run classification and identify rotten or fresh stages on apples, bananas, citrus, and more.</p>
+                    </div>
+                    
+                    <!-- Feature 4 -->
+                    <div class="feature-card anim-slide-up anim-delay-4">
+                        <div class="feature-icon-wrapper">
+                            <i class="fa-solid fa-bolt"></i>
+                        </div>
+                        <h3 class="feature-title">Fast Processing</h3>
+                        <p class="feature-text">Optimized pipelines guarantee inferences execute and stream status reports back in fractions of a second.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- How It Works Section -->
+        <section class="workflow-section" id="how-it-works">
+            <div class="container">
+                <div class="section-header anim-slide-up">
+                    <span class="section-tag">Our Pipeline</span>
+                    <h2 class="section-title">How It Works</h2>
+                    <p class="section-desc">Behind the scenes, we merge object localization with neural classification to gauge quality.</p>
+                </div>
+                
+                <div class="workflow-steps">
+                    <!-- Step 1 -->
+                    <div class="step-card anim-slide-up anim-delay-1">
+                        <div class="step-number-node">01</div>
+                        <div class="step-box">
+                            <h4 class="step-title">Upload Image</h4>
+                            <p class="step-text">Provide an image containing fresh or rotten produce through our dashboard.</p>
+                        </div>
+                    </div>
+                    
+                    <!-- Step 2 -->
+                    <div class="step-card anim-slide-up anim-delay-2">
+                        <div class="step-number-node">02</div>
+                        <div class="step-box">
+                            <h4 class="step-title">YOLO Detection</h4>
+                            <p class="step-text">A customized YOLOv5 network localizes individual fruits and crops background noise.</p>
+                        </div>
+                    </div>
+                    
+                    <!-- Step 3 -->
+                    <div class="step-card anim-slide-up anim-delay-3">
+                        <div class="step-number-node">03</div>
+                        <div class="step-box">
+                            <h4 class="step-title">CNN Classification</h4>
+                            <p class="step-text">TensorFlow CNN analyzes color gradients, brown spots, mold, and texture flags.</p>
+                        </div>
+                    </div>
+                    
+                    <!-- Step 4 -->
+                    <div class="step-card anim-slide-up anim-delay-4">
+                        <div class="step-number-node">04</div>
+                        <div class="step-box">
+                            <h4 class="step-title">Quality Output</h4>
+                            <p class="step-text">Receive status verification and confidence percentages dynamically.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Professional Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <span>🍎</span> FreshAI
+                </div>
+                <div class="footer-dev">
+                    Developed by <span>AI Startup Engineer</span>
+                </div>
+                <div class="footer-socials">
+                    <a href="https://github.com" target="_blank" class="footer-icon-link" aria-label="GitHub Repository">
+                        <i class="fa-brands fa-github"></i>
+                    </a>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 FreshAI. All rights reserved.</p>
+                <p>Academic & Startup AI Showcase</p>
+            </div>
+        </div>
+    </footer>
+
+</body>
+</html>

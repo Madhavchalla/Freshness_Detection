@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Analysis Result — FreshAI</title>
+    
+    <!-- Link Stylesheet using Flask Jinja url_for -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    
+    <!-- Add FontAwesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Link Script using Flask Jinja url_for -->
+    <script src="{{ url_for('static', filename='js/script.js') }}" defer></script>
+</head>
+<body>
+
+    <!-- Navigation Bar -->
+    <header class="navbar">
+        <div class="container navbar-container">
+            <a href="/" class="brand">
+                <span class="brand-icon">🥝</span>
+                <span class="brand-text">FreshAI</span>
+            </a>
+            <nav class="nav-links">
+                <a href="/#about" class="nav-link">About</a>
+                <a href="/#features" class="nav-link">Features</a>
+                <a href="/#how-it-works" class="nav-link">How it Works</a>
+                <a href="/" class="nav-btn">Upload Page</a>
+            </nav>
+        </div>
+    </header>
+
+    <main class="container">
+        <!-- Result Page Title -->
+        <div class="result-header anim-fade-in">
+            <div class="result-success-anim">
+                <i class="fa-solid fa-circle-check"></i>
+            </div>
+            <h1 class="hero-title" style="font-size: 2.25rem; margin-bottom: 8px;">Prediction Complete</h1>
+            <p style="color: var(--text-secondary);">The convolutional neural networks successfully analyzed the sample.</p>
+        </div>
+
+        <!-- Result Grid Layout -->
+        <div class="result-grid">
+            
+            <!-- Left Side: Uploaded Image Visual Container -->
+            <div class="result-image-card anim-slide-up anim-delay-1">
+                <div class="result-image-frame">
+                    <!-- Renders base64 image data URL from RAM directly -->
+                    <img src="{{ image_path }}" alt="Analyzed Produce Image" id="result-img">
+                </div>
+            </div>
+
+            <!-- Right Side: Metrics Dashboard -->
+            <div class="result-summary-card anim-slide-up anim-delay-2">
+                
+                <!-- Hidden Flask Prediction Value to parse in JS -->
+                <span id="raw-prediction" style="display: none;">{{ prediction }}</span>
+                
+                <h3 class="summary-title">
+                    <span>Summary</span>
+                    
+                    <!-- JS will fill status badge here (status-badge-fresh / status-badge-rotten) -->
+                    <div id="badge-status-container" class="summary-badge-status">
+                        Evaluating...
+                    </div>
+                </h3>
+
+                <div class="visualization-wrapper">
+                    
+                    <!-- Circular Gauge Indicator -->
+                    <div class="circular-gauge-box">
+                        <div class="gauge-svg-container">
+                            <svg class="gauge-svg" viewBox="0 0 80 80">
+                                <circle class="gauge-circle-bg" cx="40" cy="40" r="36" />
+                                <circle class="gauge-circle-fill" id="gauge-circle-fill" cx="40" cy="40" r="36" />
+                            </svg>
+                            <div class="gauge-text" id="gauge-percentage-txt">0%</div>
+                        </div>
+                        <div class="gauge-details">
+                            <h4 style="color: var(--text-primary);">Confidence Indicator</h4>
+                            <p>Model conviction index calculated for this target.</p>
+                        </div>
+                    </div>
+
+                    <!-- Linear Progress Level -->
+                    <div class="progress-bar-group">
+                        <div class="progress-label-bar">
+                            <span>Accuracy Confidence</span>
+                            <span id="progress-percent-txt">0%</span>
+                        </div>
+                        <div class="progress-bar-bg">
+                            <div class="progress-bar-fill" id="progress-bar-fill"></div>
+                        </div>
+                    </div>
+                    
+                </div>
+
+                <!-- Numerical Statistics Panel -->
+                <div class="stat-cards-grid" style="margin-bottom: 32px;">
+                    <!-- Stat Card 1 -->
+                    <div class="stat-item-card">
+                        <span class="stat-item-title">Classification</span>
+                        <span class="stat-item-value" id="stat-status-val">—</span>
+                    </div>
+                    <!-- Stat Card 2 -->
+                    <div class="stat-item-card">
+                        <span class="stat-item-title">Confidence</span>
+                        <span class="stat-item-value" id="stat-confidence-val">—</span>
+                    </div>
+                    <!-- Stat Card 3 -->
+                    <div class="stat-item-card">
+                        <span class="stat-item-title">Inference Speed</span>
+                        <span class="stat-item-value" id="stat-time-val">—</span>
+                    </div>
+                    <!-- Stat Card 4 -->
+                    <div class="stat-item-card">
+                        <span class="stat-item-title">Detected Target</span>
+                        <span class="stat-item-value" id="stat-count-val">1 Object</span>
+                    </div>
+                </div>
+
+                <!-- Navigation Controls -->
+                <div class="action-buttons-group">
+                    <a href="/" class="result-btn-primary">
+                        <i class="fa-solid fa-arrow-up-from-bracket"></i> Try Another Image
+                    </a>
+                    <a href="/" class="result-btn-secondary">
+                        <i class="fa-solid fa-house"></i> Go Home
+                    </a>
+                </div>
+
+            </div>
+
+        </div>
+    </main>
+
+    <!-- Professional Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <span>🍎</span> FreshAI
+                </div>
+                <div class="footer-dev">
+                    Developed by <span>AI Startup Engineer</span>
+                </div>
+                <div class="footer-socials">
+                    <a href="https://github.com" target="_blank" class="footer-icon-link" aria-label="GitHub Repository">
+                        <i class="fa-brands fa-github"></i>
+                    </a>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 FreshAI. All rights reserved.</p>
+                <p>Academic & Startup AI Showcase</p>
+            </div>
+        </div>
+    </footer>
+
+</body>
+</html>

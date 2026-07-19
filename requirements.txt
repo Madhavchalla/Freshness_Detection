@@ -1,0 +1,8 @@
+flask
+tensorflow
+torch
+ultralytics
+opencv-python-headless
+gunicorn
+numpy
+scikit-learn
