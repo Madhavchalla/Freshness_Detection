@@ -8,10 +8,15 @@ ENV PYTHONUNBUFFERED=1
 # Set working directory inside container
 WORKDIR /app
 
-# Install git (required by torch.hub.load for YOLOv5) and libglib2.0
+# Install system libraries required by OpenCV (cv2) and PyTorch (git)
 RUN apt-get update && apt-get install -y --no-install-recommends \
     git \
+    libgl1 \
     libglib2.0-0 \
+    libsm6 \
+    libxext6 \
+    libxrender1 \
+    libxcb1 \
     && rm -rf /var/lib/apt/lists/*
 
 # Copy requirements file and install dependencies
