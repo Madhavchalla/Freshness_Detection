@@ -26,9 +26,5 @@ RUN pip install --no-cache-dir -r requirements.txt
 # Copy application code, static assets, templates, and model files
 COPY . /app/
 
-# Expose server port (Render dynamically sets PORT env var)
-ENV PORT=5000
-EXPOSE $PORT
-
-# Start Gunicorn server with 1 worker and 4 threads to prevent Render OOM RAM crashes
-CMD sh -c "gunicorn app:app --bind 0.0.0.0:$PORT --workers 1 --threads 4 --timeout 180"
+# Start Gunicorn server binding directly to Render's dynamic runtime PORT (defaults to 10000)
+CMD sh -c "gunicorn app:app --bind 0.0.0.0:${PORT:-10000} --workers 1 --threads 4 --timeout 180"
