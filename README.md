@@ -3,6 +3,11 @@
 An AI-powered computer vision and deep learning web application built with **Flask**, **PyTorch**, **TensorFlow**, and **YOLOv5**. FreshAI localizes produce in images, crops out background noise, and classifies fruits as **Fresh** or **Rotten** in real time.
 
 ---
+![](Screenshot1.png)
+
+![](Screenshot2.png)
+
+![](Screenshot3.png)
 
 ## 🌟 Key Highlights & Features
 
