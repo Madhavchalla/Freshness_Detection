@@ -1,19 +1,21 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Analysis Result — FreshAI</title>
-    
+
     <!-- Link Stylesheet using Flask Jinja url_for -->
     <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
-    
+
     <!-- Add FontAwesome for icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    
+
     <!-- Link Script using Flask Jinja url_for -->
     <script src="{{ url_for('static', filename='js/script.js') }}" defer></script>
 </head>
+
 <body>
 
     <!-- Navigation Bar -->
@@ -39,12 +41,13 @@
                 <i class="fa-solid fa-circle-check"></i>
             </div>
             <h1 class="hero-title" style="font-size: 2.25rem; margin-bottom: 8px;">Prediction Complete</h1>
-            <p style="color: var(--text-secondary);">The convolutional neural networks successfully analyzed the sample.</p>
+            <p style="color: var(--text-secondary);">The convolutional neural networks successfully analyzed the sample.
+            </p>
         </div>
 
         <!-- Result Grid Layout -->
         <div class="result-grid">
-            
+
             <!-- Left Side: Uploaded Image Visual Container -->
             <div class="result-image-card anim-slide-up anim-delay-1">
                 <div class="result-image-frame">
@@ -55,13 +58,13 @@
 
             <!-- Right Side: Metrics Dashboard -->
             <div class="result-summary-card anim-slide-up anim-delay-2">
-                
+
                 <!-- Hidden Flask Prediction Value to parse in JS -->
                 <span id="raw-prediction" style="display: none;">{{ prediction }}</span>
-                
+
                 <h3 class="summary-title">
                     <span>Summary</span>
-                    
+
                     <!-- JS will fill status badge here (status-badge-fresh / status-badge-rotten) -->
                     <div id="badge-status-container" class="summary-badge-status">
                         Evaluating...
@@ -69,7 +72,7 @@
                 </h3>
 
                 <div class="visualization-wrapper">
-                    
+
                     <!-- Circular Gauge Indicator -->
                     <div class="circular-gauge-box">
                         <div class="gauge-svg-container">
@@ -95,7 +98,7 @@
                             <div class="progress-bar-fill" id="progress-bar-fill"></div>
                         </div>
                     </div>
-                    
+
                 </div>
 
                 <!-- Numerical Statistics Panel -->
@@ -148,7 +151,8 @@
                     Developed by <span>AI Startup Engineer</span>
                 </div>
                 <div class="footer-socials">
-                    <a href="https://github.com" target="_blank" class="footer-icon-link" aria-label="GitHub Repository">
+                    <a href="https://github.com" target="_blank" class="footer-icon-link"
+                        aria-label="GitHub Repository">
                         <i class="fa-brands fa-github"></i>
                     </a>
                 </div>
@@ -161,4 +165,5 @@
     </footer>
 
 </body>
+
 </html>

@@ -1,7 +1,33 @@
+# Virtual environments
 .venv/
+env/
+venv/
+
+# Large Datasets & Local Test Images
+dataset/
+final_dataset/
+test_images/
+
+# Python Bytecode & Cache
 __pycache__/
 *.pyc
+*.pyo
+*.pyd
+.pytest_cache/
+
+# IDE & Editor Configurations
 .idea/
+.vscode/
+*.swp
+
+# OS System Files
 .DS_Store
+Thumbs.db
+
+# User Uploaded Images
 static/uploads/*
 !static/uploads/.gitkeep
+
+# Temporary Scratch Scripts & Logs
+scratch/
+*.log

@@ -3,39 +3,47 @@
 
 :root {
     /* Color Palette */
-    --primary: #10B981; /* Emerald Green */
+    --primary: #10B981;
+    /* Emerald Green */
     --primary-hover: #059669;
     --primary-light: rgba(16, 185, 129, 0.1);
-    
-    --secondary: #2563EB; /* Royal Blue */
+
+    --secondary: #2563EB;
+    /* Royal Blue */
     --secondary-hover: #1D4ED8;
     --secondary-light: rgba(37, 99, 235, 0.1);
 
-    --accent: #F97316; /* Orange */
+    --accent: #F97316;
+    /* Orange */
     --accent-hover: #EA580C;
-    
-    --danger: #EF4444; /* Red */
+
+    --danger: #EF4444;
+    /* Red */
     --danger-light: rgba(239, 68, 68, 0.1);
-    
+
     /* Backgrounds & Surface */
     --bg-canvas: #f8fafc;
     --bg-card: #ffffff;
     --bg-gradient: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%);
-    
+
     /* Text colors */
-    --text-primary: #0F172A; /* Slate 900 */
-    --text-secondary: #475569; /* Slate 600 */
-    --text-muted: #94A3B8; /* Slate 400 */
+    --text-primary: #0F172A;
+    /* Slate 900 */
+    --text-secondary: #475569;
+    /* Slate 600 */
+    --text-muted: #94A3B8;
+    /* Slate 400 */
     --text-white: #ffffff;
 
     /* Border & Shadows */
-    --border-color: #E2E8F0; /* Slate 200 */
+    --border-color: #E2E8F0;
+    /* Slate 200 */
     --border-light: rgba(226, 232, 240, 0.5);
     --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
     --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -2px rgba(0, 0, 0, 0.05);
     --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.05), 0 4px 6px -4px rgba(0, 0, 0, 0.05);
     --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.08), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
-    
+
     /* Border Radius & Transitions */
     --radius-sm: 8px;
     --radius-md: 12px;
@@ -47,7 +55,9 @@
 }
 
 /* Global Reset & Base */
-*, *::before, *::after {
+*,
+*::before,
+*::after {
     box-sizing: border-box;
     margin: 0;
     padding: 0;
@@ -71,7 +81,10 @@ body {
     line-height: 1.5;
 }
 
-h1, h2, h3, h4 {
+h1,
+h2,
+h3,
+h4 {
     font-family: 'Poppins', sans-serif;
     color: var(--text-primary);
     font-weight: 700;
@@ -688,7 +701,8 @@ a {
 
 /* Footer Styles */
 .footer {
-    background: #0f172a; /* Dark Slate */
+    background: #0f172a;
+    /* Dark Slate */
     color: #94a3b8;
     padding: 60px 0 30px 0;
     border-top: 1px solid #1e293b;
@@ -904,7 +918,8 @@ a {
     stroke-width: 8px;
     stroke-linecap: round;
     stroke-dasharray: 226;
-    stroke-dashoffset: 226; /* Starts empty */
+    stroke-dashoffset: 226;
+    /* Starts empty */
     transition: stroke-dashoffset 1.5s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
@@ -955,7 +970,8 @@ a {
     height: 100%;
     background: linear-gradient(to right, var(--primary), var(--secondary));
     border-radius: 999px;
-    width: 0%; /* Animates via JS */
+    width: 0%;
+    /* Animates via JS */
     transition: width 1.5s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
@@ -1047,8 +1063,13 @@ a {
 /* ANIMATIONS DEFINITIONS                               */
 /* ---------------------------------------------------- */
 @keyframes spin {
-    0% { transform: rotate(0deg); }
-    100% { transform: rotate(360deg); }
+    0% {
+        transform: rotate(0deg);
+    }
+
+    100% {
+        transform: rotate(360deg);
+    }
 }
 
 @keyframes pulse {
@@ -1056,10 +1077,12 @@ a {
         transform: scale(0.95);
         box-shadow: 0 0 0 0 rgba(37, 99, 235, 0.4);
     }
+
     70% {
         transform: scale(1);
         box-shadow: 0 0 0 8px rgba(37, 99, 235, 0);
     }
+
     100% {
         transform: scale(0.95);
         box-shadow: 0 0 0 0 rgba(37, 99, 235, 0);
@@ -1067,8 +1090,15 @@ a {
 }
 
 @keyframes scalePulse {
-    0%, 100% { transform: scale(1); }
-    50% { transform: scale(1.05); }
+
+    0%,
+    100% {
+        transform: scale(1);
+    }
+
+    50% {
+        transform: scale(1.05);
+    }
 }
 
 /* Custom load animations */
@@ -1083,13 +1113,26 @@ a {
     animation: slideUp 0.8s cubic-bezier(0.4, 0, 0.2, 1) forwards;
 }
 
-.anim-delay-1 { animation-delay: 0.1s; }
-.anim-delay-2 { animation-delay: 0.2s; }
-.anim-delay-3 { animation-delay: 0.3s; }
-.anim-delay-4 { animation-delay: 0.4s; }
+.anim-delay-1 {
+    animation-delay: 0.1s;
+}
+
+.anim-delay-2 {
+    animation-delay: 0.2s;
+}
+
+.anim-delay-3 {
+    animation-delay: 0.3s;
+}
+
+.anim-delay-4 {
+    animation-delay: 0.4s;
+}
 
 @keyframes fadeIn {
-    to { opacity: 1; }
+    to {
+        opacity: 1;
+    }
 }
 
 @keyframes slideUp {
@@ -1107,27 +1150,35 @@ a {
         grid-template-columns: 1fr;
         gap: 48px;
     }
+
     .hero-content {
         max-width: 100%;
         text-align: center;
     }
+
     .badge-ai {
         justify-content: center;
     }
+
     .hero-features-list {
         justify-content: center;
         max-width: 500px;
         margin: 24px auto 0 auto;
     }
+
     .features-grid {
         grid-template-columns: repeat(2, 1fr);
     }
+
     .workflow-steps {
         grid-template-columns: repeat(2, 1fr);
     }
+
     .workflow-steps::before {
-        display: none; /* Hide workflow arrow link line on small viewport grid wraps */
+        display: none;
+        /* Hide workflow arrow link line on small viewport grid wraps */
     }
+
     .result-grid {
         grid-template-columns: 1fr;
         gap: 32px;
@@ -1138,35 +1189,46 @@ a {
     .navbar {
         height: 70px;
     }
+
     .nav-links {
-        display: none; /* simple responsive navbar toggles or falls back nicely */
+        display: none;
+        /* simple responsive navbar toggles or falls back nicely */
     }
+
     .hero {
         padding: 40px 0;
     }
+
     .hero-title {
         font-size: 2.3rem;
     }
+
     .hero-desc {
         font-size: 1rem;
         margin-bottom: 24px;
     }
+
     .hero-features-list {
         grid-template-columns: 1fr;
         max-width: 280px;
     }
+
     .upload-card {
         padding: 20px;
     }
+
     .dropzone {
         padding: 30px 12px;
     }
+
     .features-grid {
         grid-template-columns: 1fr;
     }
+
     .workflow-steps {
         grid-template-columns: 1fr;
     }
+
     .action-buttons-group {
         flex-direction: column;
     }

@@ -1,5 +1,5 @@
-document.addEventListener('DOMContentLoaded', function() {
-    
+document.addEventListener('DOMContentLoaded', function () {
+
     // ----------------------------------------------------
     // LANDING PAGE UPLOAD MODULE
     // ----------------------------------------------------
@@ -40,7 +40,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
         // Remove preview button
         if (removePreviewBtn) {
-            removePreviewBtn.addEventListener('click', function(e) {
+            removePreviewBtn.addEventListener('click', function (e) {
                 e.stopPropagation(); // prevent triggering dropzone click
                 resetUpload();
             });
@@ -83,7 +83,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
         // Read image file for preview
         const reader = new FileReader();
-        reader.onload = function(e) {
+        reader.onload = function (e) {
             if (previewImg) previewImg.src = e.target.result;
             if (previewContainer) previewContainer.style.display = 'block';
             if (dropzoneContent) dropzoneContent.style.display = 'none';
@@ -109,7 +109,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // Handle Form Submit Loading state
     if (uploadForm && submitBtn) {
-        uploadForm.addEventListener('submit', function() {
+        uploadForm.addEventListener('submit', function () {
             if (btnLoader) btnLoader.style.display = 'block';
             if (btnText) btnText.textContent = 'Analyzing Produce...';
             submitBtn.disabled = true;
@@ -151,7 +151,7 @@ document.addEventListener('DOMContentLoaded', function() {
             const number = parseFloat(rawString.replace(/[^0-9.]/g, ''));
             if (!isNaN(number)) confidence = number;
         }
-        
+
         // Cap confidence max
         if (confidence > 100) confidence = 100;
         if (confidence < 0) confidence = 0;
@@ -171,19 +171,19 @@ document.addEventListener('DOMContentLoaded', function() {
         // Render Circular Gauge SVG Fill
         const circleFill = document.getElementById('gauge-circle-fill');
         const gaugePercentageTxt = document.getElementById('gauge-percentage-txt');
-        
+
         if (circleFill) {
             // The circle has a stroke-dasharray of 226 (approx 2 * PI * r, r=36 -> 226)
             const circumference = 226;
             const strokeOffset = circumference - (confidence / 100) * circumference;
-            
+
             // Set correct color according to status
             if (status === 'rotten') {
                 circleFill.style.stroke = 'var(--danger)';
             } else {
                 circleFill.style.stroke = 'var(--primary)';
             }
-            
+
             // Trigger animation frame after rendering
             setTimeout(() => {
                 circleFill.style.strokeDashoffset = strokeOffset;
@@ -198,17 +198,17 @@ document.addEventListener('DOMContentLoaded', function() {
         // Animate linear progress bar
         const progressBarFill = document.getElementById('progress-bar-fill');
         const progressPercentTxt = document.getElementById('progress-percent-txt');
-        
+
         if (progressBarFill) {
             if (status === 'rotten') {
                 progressBarFill.style.background = 'linear-gradient(to right, var(--accent), var(--danger))';
             }
-            
+
             setTimeout(() => {
                 progressBarFill.style.width = confidence + '%';
             }, 100);
         }
-        
+
         if (progressPercentTxt) {
             animateValue(progressPercentTxt, 0, confidence, 1500, '%');
         }
@@ -233,7 +233,7 @@ document.addEventListener('DOMContentLoaded', function() {
             const randomTime = (Math.random() * (0.088 - 0.042) + 0.042).toFixed(3);
             statTimeVal.textContent = randomTime + 's';
         }
-        
+
         if (statCountVal) {
             // YOLO detected object count (simulate detection or mock as 1 unless specific)
             statCountVal.textContent = '1 Object';
