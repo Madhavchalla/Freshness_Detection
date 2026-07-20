@@ -8,11 +8,10 @@ ENV PYTHONUNBUFFERED=1
 # Set working directory inside container
 WORKDIR /app
 
-# Install system dependencies required for OpenCV and PyTorch CPU
+# Install git (required by torch.hub.load for YOLOv5) and libglib2.0
 RUN apt-get update && apt-get install -y --no-install-recommends \
-    libgl1-mesa-glx \
+    git \
     libglib2.0-0 \
-    build-essential \
     && rm -rf /var/lib/apt/lists/*
 
 # Copy requirements file and install dependencies
