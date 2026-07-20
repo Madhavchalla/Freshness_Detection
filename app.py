@@ -14,8 +14,8 @@ CORS(app)  # Enable Cross-Origin Resource Sharing
 print("Loading classification model (healthy_vs_rotten.h5)...")
 model = load_model("healthy_vs_rotten.h5")
 
-print("Loading YOLOv5 detection model (yolov5s.pt)...")
-yolo_model = torch.hub.load('yolov5', 'custom', path='yolov5s.pt', source='local')
+print("Loading YOLOv5 detection model...")
+yolo_model = torch.hub.load('ultralytics/yolov5', 'custom', path='yolov5s.pt')
 
 class_names = ['Fresh', 'Rotten']
 
